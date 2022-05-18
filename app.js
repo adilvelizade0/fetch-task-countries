@@ -12,6 +12,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
     fetch(`https://restcountries.com/v3.1/region/${btn.dataset.id}`)
       .then((data) => data.json())
       .then((data) => {
+        console.log(data);
         data.forEach((item) => {
           let flagUrl = item.flags.png;
           let [capital] = item.capital;
@@ -19,9 +20,10 @@ document.querySelectorAll(".btn").forEach((btn) => {
           let currencies = Object.values(item.currencies)[0].name;
           let langs = Object.values(item.languages).join(", ");
           let population = item.population;
+          let timeZone = item.timezones.join(",");
 
           document.querySelector(".countries").innerHTML += `
-     <div class="country-card col-2">
+     <div class="country-card col-3">
         <div class="country-card--img">
           <img
             src="${flagUrl}"
@@ -34,6 +36,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
           <p><b>Currency:</b> ${currencies}</p>
           <p><b>Language:</b> ${langs}</p>
           <p><b>Populations:</b> ${population}</p>
+          <p><b>TimeZone:</b> ${timeZone}</p>
         </div>
       </div>
       `;

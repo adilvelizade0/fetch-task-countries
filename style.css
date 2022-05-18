@@ -37,8 +37,9 @@
   text-align: center;
 }
 
-.countries .country-card .country-card--content h4 {
+.countries .country-card .country-card--content p {
   margin: 10px 0;
+  word-wrap: break-word;
 }
 
 .countries .country-card .country-card--img {
